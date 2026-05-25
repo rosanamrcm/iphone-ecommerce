@@ -1,0 +1,94 @@
+.header {
+  width: 100%;
+  background: #111827;
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+.dropdown {
+  position: relative;
+  z-index: 1500;
+}
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: white;
+  color: black;
+  min-width: 180px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover {
+  background: #f3f4f6;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.active {
+  color: #0071e3;
+}
+
+.top-bar {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo {
+  font-weight: bold;
+  color: white;
+}
+
+.apple {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.search {
+  width: 40%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.icon {
+  width: 24px;
+  filter: invert(1);
+}
+
+.menu {
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  background: #1f2937;
+}
+
+.menu a {
+  cursor: pointer;
+}

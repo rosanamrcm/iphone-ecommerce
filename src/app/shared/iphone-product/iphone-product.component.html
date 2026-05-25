@@ -1,0 +1,179 @@
+<div class="iphone-page">
+
+  <!-- GALERIA -->
+    <section class="gallery">
+        <div class="carousel">
+
+            <!-- SETA ESQUERDA -->
+            <button
+            class="arrow left"
+            (click)="prevImage()"
+            >
+            ‹
+            </button>
+
+            <!-- IMAGEM -->
+            <div class="main-image-container">
+
+                <img
+                    [src]="currentImage"
+                    class="main-image"
+                >
+            </div>
+                   
+            <!-- SETA DIREITA -->
+            <button
+            class="arrow right"
+            (click)="nextImage()"
+            >
+            ›
+            </button>
+        </div>
+
+    <!-- INDICADORES -->
+        <div class="indicators">
+
+            <span
+            *ngFor="let image of thumbnails; let i = index"
+
+            class="dot"
+
+            [class.active]="currentImageIndex === i"
+
+            (click)="currentImageIndex = i"
+            >
+           </span>
+
+        </div>
+    </section>
+
+  <!-- INFORMAÇÕES -->
+  <section class="info">
+
+    <h1>{{ title }}</h1>
+
+    <p class="subtitle">
+      {{ subtitle }}
+    </p>
+
+    <p class="price">
+      {{ price }}
+    </p>
+
+    <!-- MODELOS -->
+    <div
+      class="config-section"
+      *ngIf="models.length > 0"
+    >
+
+      <h2>
+        Modelo.
+        <span>Qual é o melhor para você?</span>
+      </h2>
+
+      <div class="model-options">
+
+        <div
+            class="model-card"
+            *ngFor="let model of models"
+            [class.selected]="selectedModel === model"
+            (click)="selectedModel = model"
+        >
+
+          <div class="model-header">
+            <strong>{{ model.name }}</strong>
+          </div>
+
+          <div class="model-info">
+            {{ model.screen }}
+          </div>
+
+          <div class="model-info">
+            {{ model.storageText }}
+          </div>
+
+          <div class="model-price">
+            {{ model.price }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+   <!-- CORES -->
+    <div class="config-section">
+
+        <h2>
+            Cor.
+            <span>Escolha sua cor favorita.</span>
+        </h2>
+
+        <p class="selected-color">
+            Cor
+            <span *ngIf="hoveredColor">
+            - {{ hoveredColor }}
+            </span>
+        </p>
+
+        <div class="colors">
+
+            <div
+            class="color"
+            *ngFor="let color of colors"
+
+            (mouseenter)="hoveredColor = color.name"
+            (mouseleave)="hoveredColor = ''"
+            >
+            <span [style.background]="color.code"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ARMAZENAMENTO -->
+    <div class="config-section">
+
+      <h2>
+        Armazenamento.
+        <span>De quanto espaço você precisa?</span>
+      </h2>
+
+      <div class="storage-options">
+
+        <div
+          class="storage-card"
+          *ngFor="let item of selectedModel.storageOptions"
+        >
+
+          <div>
+            <strong>{{ item.size }}</strong>
+          </div>
+
+          <div class="storage-price">
+            {{ item.price }}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="actions">
+
+      <button class="buy-btn">
+        Comprar
+      </button>
+
+      <button class="cart-btn">
+        Adicionar ao Carrinho
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
