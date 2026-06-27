@@ -6,7 +6,15 @@
 
     <div class="actions">
       <span>Login</span>
-      <img src="/icons/cart.svg" class="icon">
+
+      <button class="cart-button" type="button" (click)="toggleCart()">
+        <img src="/icons/cart.svg" class="icon">
+        <span class="cart-badge" *ngIf="(items$ | async)?.length as itemCount">
+          {{ itemCount }}
+        </span>
+      </button>
+
+      <app-cart *ngIf="isCartOpen"></app-cart>
     </div>
   </div>
   <nav class="menu">
@@ -28,10 +36,9 @@
       <span class="dropbtn">Acessórios ▼</span>
 
       <div class="dropdown-content">
-        <a routerLink=""  routerLinkActive="active">Capa Iphone 17 Pro</a>
+        <a routerLink="/capa-iphone17-pro"  routerLinkActive="active">Capa Iphone 17 Pro</a>
         <a routerLink="/air-pods"  routerLinkActive="active">Air Pods</a>
-        <a routerLink=""  routerLinkActive="active">Bateria</a>
-        <a routerLink=""  routerLinkActive="active">Mega Safe</a>      
+        <a routerLink="/bateria"  routerLinkActive="active">Bateria</a>      
       </div>
     </div>
     <a>Ofertas</a>

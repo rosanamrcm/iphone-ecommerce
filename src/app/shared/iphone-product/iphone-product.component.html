@@ -77,7 +77,7 @@
             class="model-card"
             *ngFor="let model of models"
             [class.selected]="selectedModel === model"
-            (click)="selectedModel = model"
+            (click)="selectModel(model)"
         >
 
           <div class="model-header">
@@ -112,8 +112,8 @@
 
         <p class="selected-color">
             Cor
-            <span *ngIf="hoveredColor">
-            - {{ hoveredColor }}
+            <span *ngIf="hoveredColor || selectedColor">
+            - {{ hoveredColor || selectedColor?.name }}
             </span>
         </p>
 
@@ -122,7 +122,8 @@
             <div
             class="color"
             *ngFor="let color of colors"
-
+            [class.selected]="selectedColor === color"
+            (click)="selectColor(color)"
             (mouseenter)="hoveredColor = color.name"
             (mouseleave)="hoveredColor = ''"
             >
@@ -144,7 +145,9 @@
 
         <div
           class="storage-card"
-          *ngFor="let item of selectedModel.storageOptions"
+          *ngFor="let item of selectedModel?.storageOptions"
+          [class.selected]="selectedStorage === item"
+          (click)="selectStorage(item)"
         >
 
           <div>
@@ -168,7 +171,7 @@
         Comprar
       </button>
 
-      <button class="cart-btn">
+      <button class="cart-btn" (click)="addToCart()">
         Adicionar ao Carrinho
       </button>
 

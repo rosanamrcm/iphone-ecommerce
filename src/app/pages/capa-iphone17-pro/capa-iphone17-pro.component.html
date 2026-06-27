@@ -1,0 +1,60 @@
+<app-header></app-header>
+
+<main class="case-store">
+  <section class="store-shell">
+    <div class="gallery-panel" aria-label="Galeria da capa TechWoven">
+      <div class="product-stage">
+        <img
+          [src]="selectedColor.image"
+          [alt]="'Capa de tecido TechWoven ' + selectedColor.name + ' com MagSafe para iPhone 17 Pro'"
+          class="hero-product"
+        >
+      </div>
+
+      <div class="thumb-grid">
+        <article
+          class="thumb-card"
+          *ngFor="let color of colors"
+          [class.selected]="selectedColor === color"
+          (click)="selectColor(color)"
+        >
+          <img [src]="color.image" [alt]="'Capa TechWoven ' + color.name">
+        </article>
+      </div>
+    </div>
+
+    <aside class="buy-panel" aria-label="Comprar capa para iPhone 17 Pro">
+      <p class="eyebrow">Novo</p>
+      <h1>Capa de tecido TechWoven com MagSafe para iPhone 17 Pro - {{ selectedColor.name }}</h1>
+
+      <p class="price">R$ 719,00</p>
+      <p class="installments">Em ate 12x de R$ 59,92</p>
+      <p class="cash-price">R$ 647,10 a vista (10% de desconto)</p>
+
+      <section class="choice-section" aria-labelledby="size-title">
+        <h2 id="size-title">Tamanho</h2>
+        <button class="select-card" type="button">
+          <span>iPhone 17 Pro</span>
+          <strong>6,3 pol.</strong>
+        </button>
+      </section>
+
+      <section class="choice-section" aria-labelledby="color-title">
+        <h2 id="color-title">Cor - {{ selectedColor.name }}</h2>
+        <div class="color-options">
+          <button
+            class="color-dot"
+            type="button"
+            *ngFor="let color of colors"
+            [ngClass]="color.className"
+            [class.selected]="selectedColor === color"
+            [attr.aria-label]="color.name"
+            (click)="selectColor(color)"
+          ></button>
+        </div>
+      </section>
+
+      <button class="bag-button" type="button" (click)="addToCart()">Colocar na sacola</button>
+    </aside>
+  </section>
+</main>

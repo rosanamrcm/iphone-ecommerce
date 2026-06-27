@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<main class="battery-store">
+  <section class="store-shell">
+    <div class="gallery-panel" aria-label="Galeria da Bateria MagSafe">
+      <div class="product-stage">
+        <img src="/images/bateria.png" alt="Bateria MagSafe branca para iPhone Air" class="hero-product">
+      </div>
+
+      <div class="preview-grid">
+        <article class="preview-card selected">
+          <img src="/images/bateria.png" alt="Bateria MagSafe vista de frente">
+        </article>
+        <article class="preview-card">
+          <img src="/images/bateria-2.png" alt="Bateria MagSafe vista de lado">
+        </article>
+        <article class="preview-card feature-card">
+          <span>MagSafe</span>
+          <strong>Encaixa com precisao no iPhone Air.</strong>
+        </article>
+      </div>
+    </div>
+
+    <aside class="buy-panel" aria-label="Comprar Bateria MagSafe para iPhone Air">
+      <p class="eyebrow">Novo</p>
+      <h1>Bateria MagSafe para iPhone Air</h1>
+
+      <p class="price">R$ 1.199,00</p>
+      <p class="installments">Em ate 12x de R$ 99,92</p>
+
+      <section class="choice-section" aria-labelledby="compat-title">
+        <h2 id="compat-title">Compatibilidade</h2>
+        <button class="option-card selected" type="button">
+          <span>
+            <strong>iPhone Air</strong>
+            Criada exclusivamente para esse modelo.
+          </span>
+          <small>MagSafe</small>
+        </button>
+      </section>
+
+      <section class="choice-section" aria-labelledby="highlights-title">
+        <h2 id="highlights-title">Destaques</h2>
+        <div class="highlight-list">
+          <div>
+            <strong>Design fino e leve</strong>
+            Cabe no bolso e e confortavel de segurar.
+          </div>
+          <div>
+            <strong>Ate 65% de carga adicional</strong>
+            Mais bateria para usar o iPhone Air por mais tempo.
+          </div>
+          <div>
+            <strong>Recarga sem fio de ate 12W</strong>
+            Energia rapida em qualquer lugar.
+          </div>
+        </div>
+      </section>
+
+      <button class="bag-button" type="button" (click)="addToCart()">Colocar na sacola</button>
+    </aside>
+  </section>
+</main>

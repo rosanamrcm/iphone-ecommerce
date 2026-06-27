@@ -1,5 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from '../cart/cart.service';
+
+type ProductColor = {
+  name: string;
+  code: string;
+};
+
+type StorageOption = {
+  size: string;
+  price: string;
+};
+
+type ProductModel = {
+  name: string;
+  screen: string;
+  storageText?: string;
+  price?: string;
+  storageOptions: StorageOption[];
+};
 
 @Component({
   selector: 'app-iphone-product',
@@ -10,14 +29,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IphoneProductComponent implements OnInit {
 
-  @Input() models: any[] = [];
+  @Input() models: ProductModel[] = [];
 
-  selectedModel: any;
+  selectedModel?: ProductModel;
+  selectedColor?: ProductColor;
+  selectedStorage?: StorageOption;
   hoveredColor = '';
   currentImageIndex = 0;
 
+  constructor(private cartService: CartService) {}
+
   ngOnInit() {
     this.selectedModel = this.models[0];
+    this.selectedColor = this.colors[0];
+    this.selectedStorage = this.selectedModel?.storageOptions[0];
   }
 
   @Input() title!: string;
@@ -27,7 +52,7 @@ export class IphoneProductComponent implements OnInit {
 
   @Input() thumbnails: string[] = [];
 
-  @Input() colors: { name: string, code: string }[] = [];
+  @Input() colors: ProductColor[] = [];
 
   get currentImage(): string {
     return this.thumbnails[this.currentImageIndex];
@@ -49,6 +74,33 @@ export class IphoneProductComponent implements OnInit {
     } else {
       this.currentImageIndex = this.thumbnails.length - 1;
     }
+  }
+
+  selectModel(model: ProductModel) {
+    this.selectedModel = model;
+    this.selectedStorage = model.storageOptions[0];
+  }
+
+  selectColor(color: ProductColor) {
+    this.selectedColor = color;
+  }
+
+  selectStorage(storage: StorageOption) {
+    this.selectedStorage = storage;
+  }
+
+  addToCart() {
+    if (!this.selectedModel || !this.selectedColor || !this.selectedStorage) {
+      return;
+    }
+
+    this.cartService.addItem({
+      product: this.title,
+      model: this.selectedModel.name,
+      color: this.selectedColor.name,
+      storage: this.selectedStorage.size,
+      price: this.selectedStorage.price
+    });
   }
 
 }

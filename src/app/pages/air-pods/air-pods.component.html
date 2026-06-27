@@ -1,1 +1,82 @@
 <app-header></app-header>
+
+<main class="airpods-store">
+  <section class="store-shell">
+    <div class="gallery-panel" aria-label="Galeria AirPods 4">
+      <div class="product-stage">
+        <span class="badge">Novo</span>
+        <img src="/images/air-pods.png" alt="AirPods 4 com estojo de recarga" class="hero-product">
+      </div>
+
+      <div class="preview-grid">
+        <article class="preview-card">
+          <img src="/images/air-pods-2.png" alt="AirPods 4 dentro do estojo">
+        </article>
+
+        <article class="preview-card feature-card">
+          <span>Cancelamento Ativo de Ruido</span>
+          <strong>Som mais imersivo no dia a dia.</strong>
+        </article>
+      </div>
+    </div>
+
+    <aside class="buy-panel" aria-label="Comprar AirPods 4">
+      <p class="eyebrow">AirPods</p>
+      <h1>Comprar AirPods 4 com Cancelamento Ativo de Ruido</h1>
+      <p class="rating">★★★★★ <span>Alta avaliacao dos clientes</span></p>
+      <p class="price">{{ selectedOption.price }}</p>
+      <p class="installments">ou 12x de R$ 149,92 sem juros</p>
+
+      <section class="choice-section">
+        <h2>Escolha seu modelo.</h2>
+
+        <button
+          class="option-card"
+          type="button"
+          *ngFor="let option of options"
+          [class.selected]="selectedOption === option"
+          (click)="selectOption(option)"
+        >
+          <span>
+            <strong>{{ option.name }}</strong>
+            {{ option.feature }}
+          </span>
+          <small>{{ option.price }}</small>
+        </button>
+      </section>
+
+      <section class="choice-section">
+        <h2>O que vem incluido.</h2>
+
+        <div class="included-list">
+          <div>
+            <strong>Estojo de recarga USB-C</strong>
+            Compativel com recarga sem fio.
+          </div>
+          <div>
+            <strong>Audio Adaptativo</strong>
+            Ajusta o controle de ruido automaticamente.
+          </div>
+          <div>
+            <strong>Modo Ambiente</strong>
+            Ouça o mundo ao seu redor quando precisar.
+          </div>
+        </div>
+      </section>
+
+      <div class="purchase-card">
+        <div>
+          <strong>Entrega</strong>
+          <span>Frete gratis para todo o Brasil</span>
+        </div>
+        <div>
+          <strong>Retirada</strong>
+          <span>Verifique disponibilidade na loja</span>
+        </div>
+      </div>
+
+      <button class="buy-button" type="button" (click)="addToCart()">Adicionar a sacola</button>
+      <button class="secondary-button" type="button">Comprar agora</button>
+    </aside>
+  </section>
+</main>

@@ -1,0 +1,54 @@
+<section class="cart-panel">
+  <ng-container *ngIf="items$ | async as items">
+    <div class="cart-header">
+      <h2>Carrinho</h2>
+
+      <button
+        class="clear-cart"
+        type="button"
+        *ngIf="items.length > 0"
+        (click)="clearCart()"
+      >
+        Limpar
+      </button>
+    </div>
+
+    <p class="empty-cart" *ngIf="items.length === 0">
+      Seu carrinho está vazio.
+    </p>
+
+    <div class="cart-items" *ngIf="items.length > 0">
+      <article class="cart-item" *ngFor="let item of items; let i = index">
+        <div class="item-header">
+          <strong>{{ item.product }}</strong>
+          <span>#{{ i + 1 }}</span>
+        </div>
+
+        <div class="item-row">
+          <span>Modelo</span>
+          <strong>{{ item.model }}</strong>
+        </div>
+
+        <div class="item-row">
+          <span>Cor</span>
+          <strong>{{ item.color }}</strong>
+        </div>
+
+        <div class="item-row">
+          <span>Armazenamento</span>
+          <strong>{{ item.storage }}</strong>
+        </div>
+
+        <div class="item-row item-price">
+          <span>Valor</span>
+          <strong>{{ item.price }}</strong>
+        </div>
+      </article>
+
+      <div class="cart-total">
+        <span>Total</span>
+        <strong>{{ total$ | async }}</strong>
+      </div>
+    </div>
+  </ng-container>
+</section>

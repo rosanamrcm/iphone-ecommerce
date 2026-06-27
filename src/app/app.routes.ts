@@ -6,6 +6,8 @@ import { Iphone17ProComponent } from './pages/iphone17-pro/iphone17-pro.componen
 import { Iphone17AirComponent } from './pages/iphone17-air/iphone17-air.component';
 import { Iphone17eComponent } from './pages/iphone17e/iphone17e.component';
 import { AirPodsComponent } from './pages/air-pods/air-pods.component';
+import { CapaIphone17ProComponent } from './pages/capa-iphone17-pro/capa-iphone17-pro.component';
+import { BateriaComponent } from './pages/bateria/bateria.component';
 
 
 export const routes: Routes = [
@@ -15,5 +17,7 @@ export const routes: Routes = [
   { path: 'iphone-17-pro', component: Iphone17ProComponent },
   { path: 'iphone-17-air', component: Iphone17AirComponent },
   { path: 'iphone-17e', component: Iphone17eComponent },
-  { path: 'air-pods', component: AirPodsComponent }
+  { path: 'air-pods', component: AirPodsComponent },
+  { path: 'capa-iphone17-pro', component: CapaIphone17ProComponent },
+  { path: 'bateria', component: BateriaComponent }
 ];
